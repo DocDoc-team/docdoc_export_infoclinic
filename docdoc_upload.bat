@@ -28,7 +28,7 @@ echo BINARY>> %ftpbatchfile%
 
 rem Make fresh data export from DB
 for %%a in (%exportfiles%) do (
-	echo PUT %exportpath%%%a.txt>> %ftpbatchfile%
+	echo PUT %exportpath%%%a.csv>> %ftpbatchfile%
 )
 
 rem Prepare footer of temporary file with FTP commands
