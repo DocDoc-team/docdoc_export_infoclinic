@@ -1,5 +1,4 @@
 @echo off
-@echo off
 rem =========================================================================
 rem Script for uploading export files to external FTP server
 rem 

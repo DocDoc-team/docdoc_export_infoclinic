@@ -7,7 +7,7 @@ rem =========================================================================
 
 
 rem # 1. Configure variables
-SetLocal EnableDelayedExpansion
+SetLocal EnableDelayedExpansion EnableExtensions
 echo Loading...
 call docdoc_export_config.bat
 
@@ -33,14 +33,28 @@ for %%a in (%exportfiles%) do (
     echo - %%a
     rem Use raw export file as temporary file
     if exist %exportpath%%%a_raw.txt del /Q /F %exportpath%%%a_raw.txt
-    ren %exportpath%%%a.txt %%a_raw.txt
-    rem for /F "delims=; tokens=1" %%r in (%exportpath%%%a_raw.txt) do echo %%r;>> %exportpath%%%a.txt
-    rem for /F "tokens=*"  %%r in (%exportpath%%%a_raw.txt) do for /F "tokens=* delims= " %%s in ('echo %%r ') do echo %%s>> %exportpath%%%a.txt
-    for /F "delims= " %%r in (%exportpath%%%a_raw.txt) do (
-        echo -%%r->> %exportpath%%%a.txt
+    if exist %exportpath%%%a.txt ren %exportpath%%%a.txt %%a_raw.txt
+    
+    for /F "tokens=* delims=;" %%r in (%exportpath%%%a_raw.txt) do (
+        rem Eliminate extra spaces
+        set frow=%%r##TMP#
+        set frow=!frow:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ##TMP#=##TMP#!
+        set frow=!frow:                                                                                                                                                                                                                                                                ##TMP#=##TMP#!
+        set frow=!frow:                                                                                                                                ##TMP#=##TMP#!
+        set frow=!frow:                                                                ##TMP#=##TMP#!
+        set frow=!frow:                                ##TMP#=##TMP#!
+        set frow=!frow:                ##TMP#=##TMP#!
+        set frow=!frow:        ##TMP#=##TMP#!
+        set frow=!frow:    ##TMP#=##TMP#!
+        set frow=!frow:  ##TMP#=##TMP#!
+        set frow=!frow: ##TMP#=##TMP#!
+        set frow=!frow:##TMP#=!
+        rem Store prepared row
+        echo.!frow!>> %exportpath%%%a.txt
     )
+	
     rem Clear temporary file
-	del /Q /F %exportpath%%%a_raw.txt
+    if exist %exportpath%%%a_raw.txt del /Q /F %exportpath%%%a_raw.txt
 )
 
 
