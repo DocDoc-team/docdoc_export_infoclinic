@@ -19,7 +19,7 @@ set ftpbatchfile=tmp\ftpcmd.dat
 if exist %ftpbatchfile% del %ftpbatchfile%
 
 rem Prepare header of temporary file with FTP commands
-echo open %ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
+echo open ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
 if not "%ftpstartdir%"=="" (
     echo CD %ftpstartdir%>> %ftpbatchfile%
 )
@@ -33,13 +33,13 @@ for %%a in (%exportfiles%) do (
 
 rem Prepare footer of temporary file with FTP commands
 echo CLOSE>> %ftpbatchfile%
-echo QUIT>> %ftpbatchfile%
+echo EXIT>> %ftpbatchfile%
 
 
 
 rem # 3. Run prepared FTP batch file
 echo Uploading...
-"%winscppath%winscp.exe" /console /script=%ftpbatchfile% /log=%ftplogpath%
+"%winscppath%winscp.exe" /console /script=%ftpbatchfile%  /ini=winscpi.ini /log=%ftplogpath%
 
 
 rem # 4. This batch is done. All must be OK.
