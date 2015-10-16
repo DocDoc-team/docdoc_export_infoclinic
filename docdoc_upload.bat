@@ -39,7 +39,7 @@ echo EXIT>> %ftpbatchfile%
 
 rem # 3. Run prepared FTP batch file
 echo Uploading...
-"%winscppath%winscp.exe" /console /script=%ftpbatchfile%  /ini=winscpi.ini /log=%ftplogpath%
+%winscppath%winscp.exe /console /script=%ftpbatchfile%  /ini=%winscppath%winscp.ini /log=%ftplogpath%
 
 
 rem # 4. This batch is done. All must be OK.

@@ -48,7 +48,7 @@ set ftpuser=testuser
 set ftppass=testpassword
 set ftpstartdir=testdir
 rem path to winscp ftp client
-set "winscppath=C:\Program Files\Winscp\"
+set "winscppath=winscp\"
 set ftplogpath=ftp.log
 
 
