@@ -43,10 +43,13 @@ rem FTP host & port, user and password settings
 rem FTP host examples:
 rem   ftphost=ftp.docdoc.ru
 rem   ftphost=ftp.docdoc.ru:21
-set ftphost=ftp.selcdn.ru
-set ftpuser=29291_stolica
-set ftppass=skoSrUD3xD
-set ftpstartdir=stolica
+set ftphost=ftp.docdoc.ru
+set ftpuser=testuser
+set ftppass=testpassword
+set ftpstartdir=testdir
+rem path to winscp ftp client
+set "winscppath=winscp\"
+set ftplogpath=ftp.log
 
 
 

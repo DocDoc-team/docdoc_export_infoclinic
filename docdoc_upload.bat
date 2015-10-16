@@ -19,11 +19,11 @@ set ftpbatchfile=tmp\ftpcmd.dat
 if exist %ftpbatchfile% del %ftpbatchfile%
 
 rem Prepare header of temporary file with FTP commands
-echo USER %ftpuser%> %ftpbatchfile%
-echo %ftppass%>> %ftpbatchfile%
+echo open ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
 if not "%ftpstartdir%"=="" (
     echo CD %ftpstartdir%>> %ftpbatchfile%
 )
+
 echo BINARY>> %ftpbatchfile%
 
 rem Make fresh data export from DB
@@ -32,13 +32,14 @@ for %%a in (%exportfiles%) do (
 )
 
 rem Prepare footer of temporary file with FTP commands
-echo QUIT>> %ftpbatchfile%
+echo CLOSE>> %ftpbatchfile%
+echo EXIT>> %ftpbatchfile%
 
 
 
 rem # 3. Run prepared FTP batch file
 echo Uploading...
-ftp -n -s:%ftpbatchfile% %ftphost%
+%winscppath%winscp.exe /console /script=%ftpbatchfile%  /ini=%winscppath%winscp.ini /log=%ftplogpath%
 
 
 rem # 4. This batch is done. All must be OK.
