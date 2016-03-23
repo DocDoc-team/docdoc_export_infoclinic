@@ -12,7 +12,7 @@ SELECT 'DCODE'
 FROM DOCTOR ROWS 1;
 
 SELECT  '"' || REPLACE(TRIM(COALESCE(DCODE, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(FULLNAME, '')), '"', '""')
+  || '"; "' || REPLACE(TRIM(COALESCE(DOCTOR.FULLNAME, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(FILIAL, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(DEPNUM, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(CHAIR, '')), '"', '""')
@@ -20,6 +20,6 @@ SELECT  '"' || REPLACE(TRIM(COALESCE(DCODE, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(STDTYPE, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(DOCTPOST, '')), '"', '""')
   || '";'
-FROM DOCTOR
-WHERE VIEWINSCHED = 1
+FROM DOCTOR INNER JOIN FILIALS on FILIALS.FILID = DOCTOR.FILIAL
+WHERE VIEWINSCHED = 1 AND DOCTOR.VIEWINWEB = 1 AND FILIALS.VIEWINWEB = 1
 ;
