@@ -10,7 +10,7 @@ FROM FILIALS ROWS 1;
 SELECT  '"' || REPLACE(TRIM(COALESCE(FILID, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(FULLNAME, '')), '"', '""')
   || '"; "' || REPLACE(TRIM(COALESCE(DIS_IN_SCHEDULE, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(VIEWINWEB, '')), '"', '""')
+  || '"; "' || 1
   || '";'
-FROM FILIALS WHERE VIEWINWEB = 1
+FROM FILIALS
 ;
