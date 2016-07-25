@@ -12,23 +12,33 @@ call docdoc_export_config.bat
 
 
 
-rem # 2. Recreate temporary file with FTP commands
+rem # 2. Recreate temporary file with script commands
 
 rem Check previous of temporary file with FTP commands
 set ftpbatchfile=tmp\ftpcmd.dat
 if exist %ftpbatchfile% del %ftpbatchfile%
 
 rem Prepare header of temporary file with FTP commands
-echo open ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
-if not "%ftpstartdir%"=="" (
+if "%uploadmode%"=="webdav" (
+  if "%ftpstartdir%"=="" (
+    set ftpstartdir=/
+  )
+
+  echo open https://%ftpuser%:%ftppass%@%ftphost%/upload/%ftpuser%%ftpstartdir%>> %ftpbatchfile%
+)  else (
+  echo open ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
+  
+  if not "%ftpstartdir%"=="" (
     echo CD %ftpstartdir%>> %ftpbatchfile%
+  )
+
+  echo BINARY>> %ftpbatchfile%
 )
 
-echo BINARY>> %ftpbatchfile%
 
 rem Make fresh data export from DB
 for %%a in (%exportfiles%) do (
-	echo PUT %exportpath%%%a.csv>> %ftpbatchfile%
+  echo PUT %exportpath%%%a.csv>> %ftpbatchfile%
 )
 
 rem Prepare footer of temporary file with FTP commands

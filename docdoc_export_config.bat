@@ -21,7 +21,7 @@ rem tables.
 rem For more information see readme.txt
 rem 
 set dbuser=SYSDBA
-set dbpass=ZbcaEwZ
+rem set dbpass=ZbcaEwZ
 set dbrole=ADMIN
 
 
@@ -37,7 +37,7 @@ set "fbpath=C:\Program Files\Firebird\Firebird_2_5\bin\"
 
 
 
-rem =======  FTP upload settings  ===========================================
+rem ===========  Upload settings  ===========================================
 
 rem FTP host & port, user and password settings
 rem FTP host examples:
@@ -45,11 +45,14 @@ rem   ftphost=ftp.docdoc.ru
 rem   ftphost=ftp.docdoc.ru:21
 set ftphost=ftp.docdoc.ru
 set ftpuser=testuser
-set ftppass=testpassword
-set ftpstartdir=testdir
+set ftppass=pass
+rem Directory is where all files will be saved
+set ftpstartdir=
 rem path to winscp ftp client
 set "winscppath=winscp\"
 set ftplogpath=ftp.log
+rem Accept ftp or webdav value for using approciate client protocol
+set uploadmode=ftp
 
 
 
