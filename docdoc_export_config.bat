@@ -21,7 +21,7 @@ rem tables.
 rem For more information see readme.txt
 rem 
 set dbuser=SYSDBA
-rem set dbpass=ZbcaEwZ
+set dbpass=ZbcaEwZ
 set dbrole=ADMIN
 
 
