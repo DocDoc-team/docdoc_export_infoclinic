@@ -24,7 +24,7 @@ if "%uploadmode%"=="webdav" (
     set ftpstartdir=/
   )
 
-  echo open https://%ftpuser%:%ftppass%@%ftphost%/upload/%ftpuser%%ftpstartdir%>> %ftpbatchfile%
+  echo open -certificate=* https://%ftpuser%:%ftppass%@%ftphost%/upload/%ftpuser%%ftpstartdir%>> %ftpbatchfile%
 )  else (
   echo open ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
   
