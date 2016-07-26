@@ -18,15 +18,21 @@ rem Check previous of temporary file with FTP commands
 set ftpbatchfile=tmp\ftpcmd.dat
 if exist %ftpbatchfile% del %ftpbatchfile%
 
+set settings = ""
+
+if not "%winscpsettings%"=="" (
+  set settings ="-rawsettings %winscpsettings%"
+)
+
 rem Prepare header of temporary file with FTP commands
 if "%uploadmode%"=="webdav" (
   if "%ftpstartdir%"=="" (
     set ftpstartdir=/
   )
 
-  echo open -certificate=* https://%ftpuser%:%ftppass%@%ftphost%/upload/%ftpuser%%ftpstartdir%>> %ftpbatchfile%
+  echo open -certificate=* %settings% https://%ftpuser%:%ftppass%@%ftphost%/upload/%ftpuser%%ftpstartdir%>> %ftpbatchfile%
 )  else (
-  echo open ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
+  echo open *%settings% ftp://%ftpuser%:%ftppass%@%ftphost%>> %ftpbatchfile%
   
   if not "%ftpstartdir%"=="" (
     echo CD %ftpstartdir%>> %ftpbatchfile%
