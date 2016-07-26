@@ -50,7 +50,10 @@ rem Directory is where all files will be saved
 set ftpstartdir=
 rem path to winscp ftp client
 set "winscppath=winscp\"
-set "winscpsettings=ProxyHost^=testhost ProxyUsername^=testuser FtpProxyLogonType^=6 ProxyPasswordEnc^=passwordhash"
+rem proxy settings for FTP connection
+rem set "winscpsettings=ProxyHost^=testhost ProxyUsername^=testuser FtpProxyLogonType^=6 ProxyPasswordEnc^=passwordhash"
+rem proxy settings for webDav connection
+rem set "winscpsettings=ProxyMethod=3 ProxyHost^=testhost ProxyUsername^=testuser ProxyPasswordEnc^=passwordhash"
 set ftplogpath=ftp.log
 rem Accept ftp or webdav value for using approciate client protocol
 set uploadmode=ftp
