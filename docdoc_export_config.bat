@@ -37,7 +37,7 @@ set "fbpath=C:\Program Files\Firebird\Firebird_2_5\bin\"
 
 
 
-rem =======  FTP upload settings  ===========================================
+rem ===========  Upload settings  ===========================================
 
 rem FTP host & port, user and password settings
 rem FTP host examples:
@@ -45,11 +45,18 @@ rem   ftphost=ftp.docdoc.ru
 rem   ftphost=ftp.docdoc.ru:21
 set ftphost=ftp.docdoc.ru
 set ftpuser=testuser
-set ftppass=testpassword
-set ftpstartdir=testdir
+set ftppass=pass
+rem Directory is where all files will be saved
+set ftpstartdir=
 rem path to winscp ftp client
 set "winscppath=winscp\"
+rem proxy settings for FTP connection
+rem set "winscpsettings=ProxyHost^=testhost ProxyUsername^=testuser FtpProxyLogonType^=6 ProxyPasswordEnc^=passwordhash"
+rem proxy settings for webDav connection
+rem set "winscpsettings=ProxyMethod=3 ProxyHost^=testhost ProxyUsername^=testuser ProxyPasswordEnc^=passwordhash"
 set ftplogpath=ftp.log
+rem Accept ftp or webdav value for using approciate client protocol
+set uploadmode=ftp
 
 
 
