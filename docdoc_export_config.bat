@@ -67,5 +67,5 @@ set sqlpath=.\sql\
 rem Subpath where to put export files
 set exportpath=.\export\
 rem List of subnames of sql commandlets (and corresponding export files)
-set exportfiles=clinics doctors depts doctschedule schedule
+set exportfiles=clinics doctors depts doctschedule schedule chairs
 

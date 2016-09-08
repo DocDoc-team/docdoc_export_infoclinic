@@ -141,12 +141,14 @@ MS Excel для просмотра.
     - depts
     - doctschedule
     - schedule
+    - chairs
     Prepare export files for uploading
     - clinics
     - doctors
     - depts
     - doctschedule
     - schedule
+    - chairs
     Export files generated.
 
 В результате успешной отработки скрипта, в папке /export должны будут
@@ -157,6 +159,7 @@ MS Excel для просмотра.
     - depts.csv
     - doctschedule.csv
     - schedule.csv
+    - chairs.cvs
 
 которые можно просмотреть на корректность отдаваемых данных как в любом
 текстовом редакторе, так и в табличном виде, открыв через Excel.
