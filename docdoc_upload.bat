@@ -41,6 +41,8 @@ if "%uploadmode%"=="webdav" (
   echo BINARY>> %ftpbatchfile%
 )
 
+echo option batch on>> %ftpbatchfile%
+echo option confirm off>> %ftpbatchfile%
 
 rem Make fresh data export from DB
 for %%a in (%exportfiles%) do (
@@ -55,7 +57,7 @@ echo EXIT>> %ftpbatchfile%
 
 rem # 3. Run prepared FTP batch file
 echo Uploading...
-%winscppath%winscp.exe /console /script=%ftpbatchfile%  /ini=%winscppath%winscp_default.ini /log=%ftplogpath%
+%winscppath%winscp.exe /console /script=%ftpbatchfile% /log=%ftplogpath%
 
 
 rem # 4. This batch is done. All must be OK.
