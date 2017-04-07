@@ -7,10 +7,10 @@ SELECT 'DEPNUM'
   || ';'
 FROM DEPARTMENTS ROWS 1;
 
-SELECT  '"' || REPLACE(TRIM(COALESCE(DEPNUM, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(DEPNAME, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(FILIAL, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(DEPARTMENTS.SHORTNAME, '')), '"', '""')
+SELECT  '"' || (select res from mreplace(DEPNUM, '"', '""'))
+  || '"; "' || (select res from mreplace(DEPNAME, '"', '""'))
+  || '"; "' || (select res from mreplace(FILIAL, '"', '""'))
+  || '"; "' || (select res from mreplace(DEPARTMENTS.SHORTNAME, '"', '""'))
   || '";'
 FROM DEPARTMENTS INNER JOIN FILIALS on FILIALS.FILID = DEPARTMENTS.FILIAL
 ;

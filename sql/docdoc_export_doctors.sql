@@ -11,14 +11,14 @@ SELECT 'DCODE'
   || ';'
 FROM DOCTOR ROWS 1;
 
-SELECT  '"' || REPLACE(TRIM(COALESCE(DCODE, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(DOCTOR.FULLNAME, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(FILIAL, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(DEPNUM, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(CHAIR, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(VIEWINSCHED, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(STDTYPE, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(DOCTPOST, '')), '"', '""')
+SELECT  '"' || (select res from mreplace(DCODE, '"', '""'))
+  || '"; "' || (select res from mreplace(DOCTOR.FULLNAME, '"', '""'))
+  || '"; "' || (select res from mreplace(FILIAL, '"', '""'))
+  || '"; "' || (select res from mreplace(DEPNUM, '"', '""'))
+  || '"; "' || (select res from mreplace(CHAIR, '"', '""'))
+  || '"; "' || (select res from mreplace(VIEWINSCHED, '"', '""'))
+  || '"; "' || (select res from mreplace(STDTYPE, '"', '""'))
+  || '"; "' || (select res from mreplace(DOCTPOST, '"', '""'))
   || '";'
 FROM DOCTOR INNER JOIN FILIALS on FILIALS.FILID = DOCTOR.FILIAL
 WHERE VIEWINSCHED = 1

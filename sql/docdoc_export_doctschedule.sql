@@ -12,15 +12,15 @@ SELECT 'DCODE'
   || ';'
 FROM DOCTSHEDULE ROWS 1;
 
-SELECT  '"' || REPLACE(TRIM(COALESCE(DCODE, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(CHAIR, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(CAST(WDATE AS TIMESTAMP ), '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(BEGHOUR, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(BEGMIN, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(ENDHOUR, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(ENDMIN, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(SHINTERV, '')), '"', '""')
-  || '"; "' || REPLACE(TRIM(COALESCE(FILIAL, '')), '"', '""')
+SELECT  '"' || (select res from mreplace(DCODE, '"', '""'))
+  || '"; "' || (select res from mreplace(CHAIR, '"', '""'))
+  || '"; "' || (select res from mreplace(CAST(WDATE AS TIMESTAMP), '"', '""'))
+  || '"; "' || (select res from mreplace(BEGHOUR, '"', '""'))
+  || '"; "' || (select res from mreplace(BEGMIN, '"', '""'))
+  || '"; "' || (select res from mreplace(ENDHOUR, '"', '""'))
+  || '"; "' || (select res from mreplace(ENDMIN, '"', '""'))
+  || '"; "' || (select res from mreplace(SHINTERV, '"', '""'))
+  || '"; "' || (select res from mreplace(FILIAL, '"', '""'))
   || '";'
 FROM DOCTSHEDULE INNER JOIN FILIALS on FILIALS.FILID = DOCTSHEDULE.FILIAL
 WHERE WDATE BETWEEN CAST('NOW' as TIMESTAMP ) AND (CAST('NOW' as TIMESTAMP ) + 30)
