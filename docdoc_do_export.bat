@@ -7,6 +7,9 @@ rem =========================================================================
 
 
 rem Generate new export files
+%~d0
+cd "%~p0"
+
 call docdoc_export.bat
 echo.
 
