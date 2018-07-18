@@ -245,7 +245,7 @@ Winscp это opensource ftp-клиент, мы в нашем скрипте п�
      -at line 11, column 34
      At line 23 in file .\sql\doctor_export_doctors.sql
      
-то это значит что у вас другая структура Инфоклиники. Нужно [скачать](/dfsru/docdoc_export_infoclinic/get/feature/DDB-302/support-for-sql-dialect-1.zip) другую версию скрипта.
+то это значит что у вас другая структура Инфоклиники. Нужно [скачать](https://bitbucket.org/dfsru/docdoc_export_infoclinic/get/feature/DDB-302/support-for-sql-dialect-1.zip) другую версию скрипта.
 После пройти все шаги заново
 
 ---
