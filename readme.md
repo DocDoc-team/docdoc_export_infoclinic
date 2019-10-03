@@ -225,29 +225,6 @@ Winscp это opensource ftp-клиент, мы в нашем скрипте п�
 следует предоставлять доступ даже на чтение, ввиду хранения в этих файлах
 конфиденциальных данных вроде логинов и паролей.
 
-###Возможные проблемы и ошибки
-Если при выполнении скрипты docdoc_do_export.bat у нас появляются ошибки вида
-
-    Generate new fresh export files
-    - clinics
-    Statement failed. SQLSTATE - 42S22
-    Dynamic SQL error
-    -SQL error code = -206
-    -Colunm unknown
-    -VIEWVINWEB
-    -at line 6, column 20
-    At line 14 in file .\sql\doctor_export_clinics.sql
-    - doctors
-    Dynamic SQL error
-    -SQL error code = -206
-    -Colunm unknown
-    -DOCROR.VIEWVINWEB
-     -at line 11, column 34
-     At line 23 in file .\sql\doctor_export_doctors.sql
-     
-то это значит что у вас другая структура Инфоклиники. Нужно [скачать](https://bitbucket.org/dfsru/docdoc_export_infoclinic/get/feature/DDB-302/support-for-sql-dialect-1.zip) другую версию скрипта.
-После пройти все шаги заново
-
 ---
 
 ## Как получить SYSDBA пароль
@@ -286,6 +263,30 @@ Use CONNECT or CREATE DATABASE to specify a database
 Чтобы исправить данную ошибку, необходимо сменить режим работы сервера на Classic.
 Для этого в установочной директории FireBird в файле `firebird.conf` необходимо исправить параметр `ServerMode` на `Classic`, после чего перезапустить службу FireBird.
 
+
+###### Устаревшая версия инфоклиники
+
+Если при выполнении скрипты docdoc_do_export.bat у нас появляются ошибки вида
+
+    Generate new fresh export files
+    - clinics
+    Statement failed. SQLSTATE - 42S22
+    Dynamic SQL error
+    -SQL error code = -206
+    -Colunm unknown
+    -VIEWVINWEB
+    -at line 6, column 20
+    At line 14 in file .\sql\doctor_export_clinics.sql
+    - doctors
+    Dynamic SQL error
+    -SQL error code = -206
+    -Colunm unknown
+    -DOCROR.VIEWVINWEB
+     -at line 11, column 34
+     At line 23 in file .\sql\doctor_export_doctors.sql
+     
+то это значит что у вас другая структура Инфоклиники. Нужно [скачать](https://bitbucket.org/dfsru/docdoc_export_infoclinic/get/feature/DDB-302/support-for-sql-dialect-1.zip) другую версию скрипта.
+После пройти все шаги заново
 
 ЧТО ДАЛЬШЕ
 -----------
