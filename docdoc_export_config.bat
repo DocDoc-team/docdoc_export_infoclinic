@@ -56,7 +56,7 @@ rem proxy settings for webDav connection
 rem set "winscpsettings=ProxyMethod=3 ProxyHost^=testhost ProxyUsername^=testuser ProxyPasswordEnc^=passwordhash"
 set ftplogpath=ftp.log
 rem Accept ftp or webdav value for using approciate client protocol
-set uploadmode=ftp
+set uploadmode=webdav
 
 
 
